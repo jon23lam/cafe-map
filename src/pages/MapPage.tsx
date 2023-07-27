@@ -12,9 +12,11 @@ const center = {
 };
 
 export function MapPage() {
+  const configval = process.env.REACT_APP_CAFE_MAP_KEY as string
+  console.log(configval)
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: "YOUR_API_KEY"
+    googleMapsApiKey: configval
   })
 
   const [map, setMap] = useState<google.maps.Map | null>(null);
