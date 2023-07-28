@@ -1,0 +1,30 @@
+{
+  "data": {
+    "cafes": [
+      {
+        "id": 1,
+        "name": "Romi's",
+        "address": "744 St Clair Ave West",
+        "type": "Bakery",
+        "lat": 43.681510,
+        "lng": -79.427970
+      },
+      {
+        "id": 2,
+        "name": "Kafe the Kam",
+        "address": "3 Isabella St, Toronto Ontario",
+        "type": "Korean Cafe",
+        "lat": 43.667530,
+        "lng": -79.385240
+      },
+      {
+        "id": 3,
+        "name": "Bevy cafe",
+        "address": "225 Wellington St W, Toronto Ontario",
+        "type": "Study Spot",
+        "lat": 43.645150,
+        "lng": -79.388880
+      }
+    ]
+  }
+}
