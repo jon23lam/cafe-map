@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
-import { MapPage } from "./pages/MapPage"
+import { MapPage } from "./pages/MapPage/MapPage"
 
 import './App.scss';
 

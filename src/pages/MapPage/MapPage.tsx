@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import cafeJson from "../database/CafeLocations.json"
-import { Cafe } from '../types/Cafe';
+import cafeJson from "../../database/CafeLocations.json"
+import { Cafe } from '../../types/Cafe';
 import { 
   GoogleMap, 
   Marker,
@@ -22,12 +22,12 @@ const center = {
 const INITIAL_ZOOM = 13
 const cafeLocations: Array<Cafe> = cafeJson.data.cafes
 
+const mapsApiKey = process.env.REACT_APP_CAFE_MAP_KEY as string
+
 
 export function MapPage() {
-  const mapsApiKey = process.env.REACT_APP_CAFE_MAP_KEY as string
 
   const [map, setMap] = useState<google.maps.Map | null>(null);
-
   const [activeMarker, setActiveMarker] = useState<number| null>(null);
 
   const { isLoaded } = useJsApiLoader({
@@ -39,7 +39,6 @@ export function MapPage() {
   const onLoad = React.useCallback(function callback(map: google.maps.Map) {
     // This is just an example of getting and using the map instance!!! don't just blindly copy!
     map.setZoom(INITIAL_ZOOM)
-
 
     setMap(map)
   }, [])
@@ -55,6 +54,27 @@ export function MapPage() {
     setActiveMarker(marker);
   };
 
+  const renderMarkers = () => {
+    return (
+      cafeLocations.map((cafe) => (
+        <Marker
+          key={cafe.id}
+          position={{lat: cafe.lat, lng: cafe.lng}}
+          onClick={() => handleActiveMarker(cafe.id)}
+        >
+          {activeMarker === cafe.id ? (
+            <InfoWindowF 
+              position={{lat: cafe.lat, lng: cafe.lng}}
+              onCloseClick={() => setActiveMarker(null)}
+            >
+              <div>{`${cafe.name} (${cafe.type})`}</div>
+            </InfoWindowF>
+          ) : null}
+        </Marker>
+      ))
+    )
+  }
+
   return isLoaded ? (
       <GoogleMap
         mapContainerStyle={containerStyle}
@@ -64,22 +84,7 @@ export function MapPage() {
         onLoad={onLoad}
         onUnmount={onUnmount}
       >
-          {cafeLocations.map(({ id, name, address, type, lat, lng }) => (
-            <Marker
-              key={id}
-              position={{lat: lat, lng: lng}}
-              onClick={() => handleActiveMarker(id)}
-            >
-              {activeMarker === id ? (
-                <InfoWindowF 
-                  position={{lat: lat, lng: lng}}
-                  onCloseClick={() => setActiveMarker(null)}
-                >
-                  <div>{`${name} (${type})`}</div>
-                </InfoWindowF>
-              ) : null}
-            </Marker>
-          ))}
+          {renderMarkers()}
       </GoogleMap>
   ) : <></>
 
