@@ -24,6 +24,14 @@
         "type": "Study Spot",
         "lat": 43.645150,
         "lng": -79.388880
+      },
+      {
+        "id": 4,
+        "name": "Cho Kwok Lat",
+        "address": "31 Main St Markham",
+        "type": "Patisserie/Cakes",
+        "lat": 43.875050,
+        "lng": -79.260070
       }
     ]
   }

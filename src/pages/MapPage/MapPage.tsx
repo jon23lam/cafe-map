@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import cafeJson from "../../database/CafeLocations.json"
 import { Cafe } from '../../types/Cafe';
-import { 
+import { MapInfoWindow } from "./MapInfoWindow"
+// import { Clusterer } from '@google/markerclustererplus';
+import {
   GoogleMap, 
   Marker,
   MarkerClusterer,
@@ -47,32 +49,35 @@ export function MapPage() {
     setMap(null)
   }, [])
 
-  const handleActiveMarker = (marker: number) => {
+  function handleActiveMarker(marker: number) {
     if (marker === activeMarker) {
       return;
     }
     setActiveMarker(marker);
   };
 
-  const renderMarkers = () => {
-    return (
-      cafeLocations.map((cafe) => (
+  function renderMarkers (clusterer: any) {
+    return cafeLocations.map((cafe) => (
         <Marker
           key={cafe.id}
           position={{lat: cafe.lat, lng: cafe.lng}}
           onClick={() => handleActiveMarker(cafe.id)}
+          clusterer={clusterer}
         >
           {activeMarker === cafe.id ? (
             <InfoWindowF 
               position={{lat: cafe.lat, lng: cafe.lng}}
               onCloseClick={() => setActiveMarker(null)}
             >
-              <div>{`${cafe.name} (${cafe.type})`}</div>
+              <MapInfoWindow 
+                name={cafe.name}
+                type={cafe.type}
+                address={cafe.address}
+              />
             </InfoWindowF>
           ) : null}
         </Marker>
       ))
-    )
   }
 
   return isLoaded ? (
@@ -84,7 +89,14 @@ export function MapPage() {
         onLoad={onLoad}
         onUnmount={onUnmount}
       >
-          {renderMarkers()}
+        <MarkerClusterer
+          averageCenter
+          enableRetinaIcons
+          gridSize={60}
+        >
+
+          {(clusterer) => <div>{renderMarkers(clusterer)}</div>}
+        </MarkerClusterer>
       </GoogleMap>
   ) : <></>
 
