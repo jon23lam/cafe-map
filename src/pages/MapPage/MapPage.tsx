@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import cafeJson from "../../database/CafeLocations.json"
 import { Cafe } from '../../types/Cafe';
 import { MapInfoWindow } from "./MapInfoWindow"
-// import { Clusterer } from '@google/markerclustererplus';
 import {
   GoogleMap, 
   Marker,
@@ -12,7 +11,7 @@ import {
 } from '@react-google-maps/api';
 
 const containerStyle = {
-  width: '100vw',
+  width: '80vw',
   height: '100vh'
 };
 
@@ -21,16 +20,29 @@ const center = {
   lng: -79.3750
 };
 
+const tmpCafes = cafeJson.data.cafes
 const INITIAL_ZOOM = 13
-const cafeLocations: Array<Cafe> = cafeJson.data.cafes
 
 const mapsApiKey = process.env.REACT_APP_CAFE_MAP_KEY as string
 
+export type MapPageProps = {
+  filters: Array<string>
+}
 
-export function MapPage() {
+export function MapPage({filters}: MapPageProps) {
 
   const [map, setMap] = useState<google.maps.Map | null>(null);
   const [activeMarker, setActiveMarker] = useState<number| null>(null);
+  const [cafeLocations, setCafeLocations] = useState<Array<Cafe>>(cafeJson.data.cafes)
+
+  useEffect(() => {
+    if (filters.length > 0) {
+      const filteredCafes = cafeJson.data.cafes.filter(cafe => filters.includes(cafe.type))
+      setCafeLocations(filteredCafes)
+    } else {
+      setCafeLocations(cafeJson.data.cafes)
+    }
+  }, [filters])
 
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
@@ -94,7 +106,6 @@ export function MapPage() {
           enableRetinaIcons
           gridSize={60}
         >
-
           {(clusterer) => <div>{renderMarkers(clusterer)}</div>}
         </MarkerClusterer>
       </GoogleMap>

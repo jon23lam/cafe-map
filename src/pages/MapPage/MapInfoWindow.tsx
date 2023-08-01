@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import "./MapPageInfoWindow.scss"
+import "./MapInfoWindow.scss"
 
 
 export type MapInfoWindowProps = {
