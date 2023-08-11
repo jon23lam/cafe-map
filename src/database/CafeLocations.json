@@ -13,13 +13,13 @@
         "id": 2,
         "name": "Kafe the Kam",
         "address": "3 Isabella St, Toronto Ontario",
-        "type": "Korean Cafe",
+        "type": "Cafe",
         "lat": 43.667530,
         "lng": -79.385240
       },
       {
         "id": 3,
-        "name": "Bevy cafe",
+        "name": "Bevy Cafe",
         "address": "225 Wellington St W, Toronto Ontario",
         "type": "Study Spot",
         "lat": 43.645150,
@@ -32,6 +32,54 @@
         "type": "Patisserie/Cakes",
         "lat": 43.875050,
         "lng": -79.260070
+      },
+      {
+        "id": 5,
+        "name": "Simpl Things ",
+        "address": "269 Dunn Ave, Toronto, ON",
+        "type": "Bar",
+        "lat": 43.640930,
+        "lng": -79.434320
+      },
+      {
+        "id": 6,
+        "name": "Chula Taberna Mexicana ",
+        "address": "1058 Gerrard St E, Toronto, ON",
+        "type": "Mexican Restaurant",
+        "lat": 43.669312,
+        "lng": -79.335960
+      },
+      {
+        "id": 7,
+        "name": "Ace Hotel ",
+        "address": "51 Camden St, Toronto, ON",
+        "type": "Study Spot",
+        "lat": 43.646710,
+        "lng": -79.398130
+      },
+      {
+        "id": 8,
+        "name": "The Night Baker ",
+        "address": " 825 College St, Toronto, ON ",
+        "type": "Sweet Treats",
+        "lat": 43.654340,
+        "lng": -79.422230
+      },
+      {
+        "id": 9,
+        "name": "Cafe Bon Bon ",
+        "address": " 550 Hwy 7 #90, Richmond Hill, ON  ",
+        "type": "Cafe",
+        "lat": 43.844730,
+        "lng": -79.383290
+      },
+      {
+        "id": 10,
+        "name": "Alaia Cafe ",
+        "address": " 100 City Centre Dr, Mississauga, ON  ",
+        "type": "Cafe",
+        "lat": 43.592873,
+        "lng": -79.642984
       }
     ]
   }
