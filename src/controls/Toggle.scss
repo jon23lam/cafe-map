@@ -1,0 +1,25 @@
+.Toggle {
+  display: flex;
+  margin: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: -webkit-fill-available;
+  background-color: white;
+  cursor: pointer;
+
+  &.active{
+    background-color: wheat;
+  }
+
+  .Toggle__icon {
+    svg {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  .Toggle__text {
+    display: flex;
+    align-items: center;
+  }
+}

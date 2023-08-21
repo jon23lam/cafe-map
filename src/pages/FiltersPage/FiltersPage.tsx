@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-
+import { SVG_MAP } from '../../assets/svgs';
+import { Toggle } from "../../controls/Toggle"
 
 import "./FiltersPage.scss"
 
@@ -31,20 +32,32 @@ export function FiltersPage({onChange}: FiltersPageProps) {
       className="FiltersPage"
     >
       <div className="FiltersPage__item">
-        <input type="checkbox" id="bakery" onChange={() => onCheckboxClicked("Bakery")} />
-        <h3>Bakery</h3>
+        <Toggle 
+          text="Bakery"
+          icon={SVG_MAP["Sweet Treats"]}
+          onClick={onCheckboxClicked}
+        />
       </div>
       <div className="FiltersPage__item">
-        <input type="checkbox" id="korean_cafe" onChange={() => onCheckboxClicked("Korean Cafe")} />
-        <h3>Korean Cafe</h3>
+        <Toggle 
+          text="Korean Cafe"
+          icon={SVG_MAP["Sweet Treats"]}
+          onClick={onCheckboxClicked}
+        />
       </div>
       <div className="FiltersPage__item">
-        <input type="checkbox" id="study" onChange={() => onCheckboxClicked("Study Spot")} />
-        <h3>Study Spot</h3>
+        <Toggle 
+          text="Study Spot"
+          icon={SVG_MAP["Sweet Treats"]}
+          onClick={onCheckboxClicked}
+        />
       </div>
       <div className="FiltersPage__item">
-        <input type="checkbox" id="cakes" onChange={() => onCheckboxClicked("Patisserie/Cakes")} />
-        <h3>Patisserie/Cakes</h3>
+        <Toggle 
+          text="Patisserie/Cakes"
+          icon={SVG_MAP["Sweet Treats"]}
+          onClick={onCheckboxClicked}
+        />
       </div>
     </div>
   )

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import cafeJson from "../../database/CafeLocations.json"
 import { Cafe } from '../../types/Cafe';
 import { MapInfoWindow } from "./MapInfoWindow"
+import { IceCreamPin } from '../../assets/svgs';
 import {
   GoogleMap, 
   Marker,
@@ -14,6 +15,7 @@ const containerStyle = {
   width: '80vw',
   height: '100vh'
 };
+
 
 const center = {
   lat: 43.6405,
@@ -75,6 +77,7 @@ export function MapPage({filters}: MapPageProps) {
           position={{lat: cafe.lat, lng: cafe.lng}}
           onClick={() => handleActiveMarker(cafe.id)}
           clusterer={clusterer}
+          icon={{url: IceCreamPin}}
         >
           {activeMarker === cafe.id ? (
             <InfoWindowF 
